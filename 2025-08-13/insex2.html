@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+</head>
+<body>
+     <table border="1" cellspacing="0" cellpadding="5"  >
+          <tr >
+               <th>id</th>
+               <th>name</th>
+               <th>address</th>
+               <th>email</th>
+               <th>username</th>
+               <th>webside</th>
+          </tr>
+          <tbody id="data">
+
+          </tbody>
+     </table>
+     
+
+     <script src="js/jquery-3.7.1.min.js"></script>
+     <script>
+          $.ajax({
+               url: "https://jsonplaceholder.typicode.com/users",
+               type:"GET",
+               // data : {},  //form ar jonno
+               success: function(res){
+                    console.log(res);
+                    let user ="";
+                    // document.writeln(JSON.stringify(res[0]));
+                    res.forEach(element => {
+                         console.log(element);
+                         // document.writeln(element.id);
+                         // document.writeln("<hr>")
+                         
+                         // document.writeln(element.name);
+                         // document.writeln(element.username);
+
+                         user += `
+                         <tr>
+                              <td>${element.id}</td>
+                              <td>${element.name}</td>
+                              <td>${element.address["city"]}</td>
+                              <td>${element.email}</td>
+                              <td>${element.username}</td>
+                              <td>${element.website}</td>
+                         </tr>
+                         `;
+                    });
+                    $("#data").html(user);
+               },
+               error: function(err){
+                    console.log(err);
+               }
+          });
+
+     </script>
+     
+</body>
+</html>

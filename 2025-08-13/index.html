@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+</head>
+
+<body>
+     <select name="post_id" id="post">
+          <option value="1">post 1</option>
+          <option value="2">post 2</option>
+          <option value="3">post 3</option>
+          <option value="4">post 4</option>
+          <option value="5">post 5</option>
+          <option value="6">post 6</option>
+          <option value="7">post 7</option>
+          <option value="8">post 8</option>
+     </select>
+     <hr>
+     <div id="result">
+
+     </div>
+
+
+     <script src="js/jquery-3.7.1.min.js"></script>
+     <script>
+          //get 
+          //post
+          // get method
+          // $.ajax({
+          //      url: "https://jsonplaceholder.typicode.com/users",
+          //      type:"GET",
+          //      // data : {},  //form ar jonno
+          //      success: function(res){
+          //           console.log(res);
+          //           document.writeln(JSON.stringify(res[0]));
+          //      },
+          //      error: function(err){
+          //           console.log(err);
+          //      }
+          // });
+
+          //(#post).change()
+
+          $("#post").on("change", function () {             
+               let value = $(this).val();
+               // console.log(value);
+               let urlPost = "https://jsonplaceholder.typicode.com/posts/" + value;
+               // console.log(url)
+               $.ajax({
+                    url: urlPost,
+                    type: "GET",
+                    // data : {},  //form ar jonno
+                    success: function (res) {
+                         console.log(res);
+                         // console.log(res.title);
+                         // document.writeln(JSON.stringify(res[0]));
+                         let user = `
+                    <h4> ${res.id}</h4>
+                    <h1> ${res.title}</h1>
+                    <p> ${res.body}</p>
+                    
+                    `;
+                         $("#result").html(user);
+                    },
+                    error: function (err) {
+                         console.log(err);
+                    }
+               });
+          });
+          
+          $.ajax({            //get post all ajax use kora hoi
+               url: "https://jsonplaceholder.typicode.com/posts/1",
+               type: "GET",
+               // data : {},  //form ar jonno
+               success: function (res) {
+                    console.log(res);
+                    // console.log(res.title);
+                    // document.writeln(JSON.stringify(res[0]));
+                    let user = `
+                    <h4> ${res.id}</h4>
+                    <h1> ${res.title}</h1>
+                    <p> ${res.body}</p>
+                    
+                    `;
+                    $("#result").html(user);
+               },
+               error: function (err) {
+                    console.log(err);
+               }
+          });
+
+          //for post method 
+
+          $.ajax({            //get post all ajax use kora hoi
+               url: "https://jsonplaceholder.typicode.com/posts",
+               type: "POST",
+               // data : {},  //form ar jonno
+               success: function (res) {
+                    console.log(res);
+               },
+               error: function (err) {
+                    console.log(err);
+               }
+          });
+          //for put method 
+          $.ajax({            //get post all ajax use kora hoi
+               url: "https://jsonplaceholder.typicode.com/posts/1",
+               type: "PUT",
+               // data : {},  //form ar jonno
+               success: function (res) {
+                    console.log(res);
+               },
+               error: function (err) {
+                    console.log(err);
+               }
+          });
+          //for put method 
+          $.ajax({            //get post all ajax use kora hoi
+               url: "https://jsonplaceholder.typicode.com/posts/1",
+               type: "DELETE",
+               // data : {},  //form ar jonno
+               success: function (res) {
+                    console.log(res);
+               },
+               error: function (err) {
+                    console.log(err);
+               }
+          });
+
+          
+     </script>
+
+
+</body>
+
+</html>

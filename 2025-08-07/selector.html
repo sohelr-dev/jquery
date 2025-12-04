@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+</head>
+<body>
+     
+<ul>
+     <li>line 1</li>
+     <li>line 2</li>
+     <li>line 3</li>
+     <li>line 4</li>
+     <li>line 5</li>
+</ul>
+<p>para 1</p>
+<p>para 2</p>
+<p>para 3</p>
+<p>para 4</p>
+<span>.................................................................</span>
+<div>
+     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, iure reprehenderit sequi officiis dolorum facilis quos libero aliquam provident dolor illum explicabo eos suscipit molestiae.</p>
+     <div>
+          <p>inner para 1</p>
+          <p>
+               <section >
+                    <p>hello</p>
+                    <div >
+                         <p class="para-inner">hello2</p>
+                    </div>
+               </section>
+          </p>
+          <SECtion>
+          <p >inner para 2</p>
+     </SECtion>
+     </div>
+     <div>
+          <p>inner para 1</p>
+          <div >
+               <p>hello</p>
+               <div>
+                    <p>hello2</p>
+               </div>
+          </div>
+          <SECtion>
+               <div>
+                    <p>blank
+                         <div><p>he212</p></div>
+                    </p>
+               </div>
+               <p class="para">inner para 2</p>
+          </SECtion>
+     </div>
+</div>  
+
+<ul class="next">
+     <li>Number 1</li>
+     <li>Number 2</li>
+     <li class="sibling">Number 3</li>
+     <li>Number 4</li>
+     <li>Number 5</li>
+</ul>
+
+     <script src="js/jquery-3.7.1.min.js"></script>
+     <script>
+          $("li").eq(1).css("color","red"); //eq() index number count kore 
+          $("li").eq(2).css("color","green");
+          $("li").eq(3).css("background-color","cyan");
+          $("li").eq(4).css({
+               "color":"aqua",
+               "border": "2px solid red",
+               "text-align":"center",
+               "font-size":"20px","background-color":"black"
+          });
+          $("p").eq(2).css("color", "yellow");
+
+          $(".para-inner").closest("p").css("color","red");
+          $(".para").parent().css("color","green");
+     </script>
+     <script>
+          // sibling
+
+          $(".next li").eq(3).prev().css("color","green"); //ager li
+          $(".next li").eq(3).next().css("border","2px solid green"); //porer li
+
+          //number 3 ar siblings sob gula ke dhore
+          $(".sibling").siblings().css("color","orange"); //porer li
+
+          //append mane sobar pore add kora li 
+          $(".sibling").parent().append("<li>Last Num</li>");
+          //append mane sobar age add kora li 
+          $(".sibling").parent().prepend("<li>First Num</li>");
+
+
+     </script>
+
+
+
+<br><br><br><br><br>
+<br><br><br><br><br>
+</body>
+</html>

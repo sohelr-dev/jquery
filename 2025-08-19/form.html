@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          .color-red{
+               color: red;
+          }
+     </style>
+</head>
+<body>
+     <!-- action="javascript:;" eta dile redirect off kore rakha -->
+     <form class="my-form" action="javascript:;" method="get">
+          <div>
+               <input type="text" name="name" >
+               <br><span class="color-red"></span>
+          </div>
+          <div>
+               <input type="text" name="email" >
+               <br><span class="color-red"></span>
+          </div>
+          <div>
+               <input type="text" name="phone" >
+               <br><span class="color-red"></span>
+          </div>
+          <button type="submit">Submit</button>
+     </form>
+     <!-- <form class="my-form" action="javascript:;" method="post">
+          <input type="text" name="name" >
+          <input type="text" name="ed" >
+          <button type="submit">Submit2</button>
+     </form> -->
+     
+     <script src="js/jquery-3.7.1.min.js"></script>
+     <script>
+          $('.my-form').on("submit",function(event){
+               // console.log(event.target);
+               // console.log(event.target.name.value); //name ar value show
+
+               // $(this).find('input').each(function(){      //input filed count
+               //      console.log($(this).val());
+               // });
+               event.preventDefault();
+               let name =event.target.name;
+               let email =event.target.email;
+               let phone =event.target.phone;
+               // console.log(name,email,phone);
+               let nameValid = false;
+               let emailValid = false;
+
+               if(name.value == ""){
+                    $(name).siblings("span").text("Name is require");
+                    nameValid = false;
+               }else{
+                    $(name).siblings("span").text("");
+                    nameValid = true;
+               }
+
+               let regEmail =  /^[a-zA-Z0-9._]{2,}[@]{1}[a-zA-Z0-9._]{2,63}[.]{1}[a-zA-Z]{2,5}$/;
+               if(email.value == ""){
+                    $(email).siblings('span').text("Email require");
+                    emailValid = false;
+               }else if(regEmail.test(email.value) ==false){
+                    $(email).siblings('span').text("Please Enter Valid Email");
+                    emailValid = false;
+               }else{
+                    $(email).siblings('span').text("");
+                    emailValid = true;
+
+               }
+
+               if(nameValid && emailValid){
+                    this.submit();
+                    alert("Form Submit SuccessFull!")
+               }
+
+
+              
+          })
+
+     </script>
+</body>
+</html>
